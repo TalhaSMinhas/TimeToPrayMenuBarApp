@@ -58,7 +58,9 @@ struct ContentView: View {
                 Divider()
                 Text("Fajr: \(today.fajr ?? "--")")
                 Text("Zuhr: \(today.zuhr ?? "--")")
+                Text("Asr: \(today.asrHanafi ?? "--")")
                 Text("Maghrib: \(today.maghrib ?? "--")")
+                Text("Esha: \(today.esha ?? "--")")
             } else {
                 Text("No data for today")
             }
