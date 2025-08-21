@@ -10,13 +10,35 @@ import SwiftUI
 @main
 struct TimeToPrayApp: App {
     var body: some Scene {
-        MenuBarExtra(
-            "TimeToPray",
-            systemImage: "characters.uppercase"
-        ){
+        MenuBarExtra {
             ContentView()
+                .overlay(alignment: .topTrailing) {
+                    Button(
+                        "Quit",
+                        systemImage: "x.circle.fill"
+                    ) {
+                        NSApp.terminate(nil)
+                    }
+                    .labelStyle(.iconOnly)
+                    .buttonStyle(.plain)
+                    .padding(6)
+                }
                 .frame(width: 300, height: 180)
+        } label: {
+            Label {
+                Text("Time to Pray")
+            } icon: {
+                if let nsImage = NSImage(named: "mosque") {
+                    Image(nsImage: nsImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18, height: 18)
+                } else {
+                    Image(systemName: "moon.stars") // fallback
+                }
+            }
         }
         .menuBarExtraStyle(.window)
     }
 }
+
