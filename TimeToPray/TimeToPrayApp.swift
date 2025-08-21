@@ -21,9 +21,9 @@ struct TimeToPrayApp: App {
                     }
                     .labelStyle(.iconOnly)
                     .buttonStyle(.plain)
-                    .padding(30)
+                    .padding(10)
                 }
-                .frame(width: 300, height: 300)
+                .frame(width: 280, height: 210)
                 .background(.ultraThinMaterial)
         } label: {
             Label {
