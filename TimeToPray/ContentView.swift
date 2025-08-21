@@ -44,6 +44,18 @@ struct ContentView: View {
         }
     }
     
+    func addMinutes(to time: String?, minutes: Int) -> String? {
+        guard let time = time else { return nil }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        
+        guard let date = formatter.date(from: time) else { return nil }
+        
+        let newDate = Calendar.current.date(byAdding: .minute, value: minutes, to: date)!
+        return formatter.string(from: newDate)
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             if let today = store.timesFor() {
@@ -56,17 +68,54 @@ struct ContentView: View {
                     Text("Masjid-ul-Khaleel")
                 }
                 Divider()
-                Text("Fajr: \(today.fajr ?? "--")")
-                Text("Zuhr: \(today.zuhr ?? "--")")
-                Text("Asr: \(today.asrHanafi ?? "--")")
-                Text("Maghrib: \(today.maghrib ?? "--")")
-                Text("Esha: \(today.esha ?? "--")")
+                Grid(alignment: .leading, horizontalSpacing: 20, verticalSpacing: 6){
+                    GridRow{
+                        Text("")
+                        Text("Azaan")
+                        Text("Jamaat")
+                    }
+                    
+                    GridRow{
+                        Text("Fajr")
+                        Text("\(today.fajrAzaan ?? "--")")
+                        Text("\(today.fajrJamaat ?? "--")")
+                    }
+                    
+                    GridRow{
+                        Text("Zuhr")
+                        Text("\(today.zuhrAzaan ?? "--")")
+                        Text("\(today.zuhrJamaat ?? "--")")
+                    }
+                    
+                    GridRow{
+                        Text("Asr")
+                        Text("\(today.asrAzaan ?? "--")")
+                        Text("\(today.asrJamaat ?? "--")")
+                    }
+                    
+                    GridRow{
+                        Text("Maghrib")
+                        Text("\(today.maghrib ?? "--")")
+                        Text("\(addMinutes(to: today.maghrib, minutes: 3) ?? "--")")
+                    }
+                    
+                    GridRow{
+                        Text("Esha")
+                        Text("\(today.eshaAzaan ?? "--")")
+                        Text("\(today.eshaJamaat ?? "--")")
+                    }
+                }
             } else {
                 Text("No data for today")
             }
         }
-        .padding(12)
+        .padding()
         .frame(width: 280)
+        .background(.ultraThinMaterial)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .strokeBorder(.white.opacity(0.2), lineWidth: 1)
+        )
     }
 }
 
