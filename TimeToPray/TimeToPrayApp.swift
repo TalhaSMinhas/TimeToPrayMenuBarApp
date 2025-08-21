@@ -10,8 +10,13 @@ import SwiftUI
 @main
 struct TimeToPrayApp: App {
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra(
+            "TimeToPray",
+            systemImage: "characters.uppercase"
+        ){
             ContentView()
+                .frame(width: 300, height: 180)
         }
+        .menuBarExtraStyle(.window)
     }
 }
