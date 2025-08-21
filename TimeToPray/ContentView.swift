@@ -8,32 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var textInput: String = ""
-        
+    @StateObject private var store = TimetableStore()
+
         var body: some View {
-            VStack(alignment: .leading) {
-                Text("Add your text below:")
-                    .foregroundStyle(.secondary)
-                TextEditor(text: $textInput)
-                    .padding(.vertical, 4)
-                    .scrollContentBackground(.hidden)
-                    .background(.thinMaterial)
-                Button(
-                    "Copy uppercased result",
-                    systemImage: "square.on.square"
-                ) {
-                    let pasteboard = NSPasteboard.general
-                    pasteboard.clearContents()
-                    pasteboard.setString(
-                        textInput.uppercased(),
-                        forType: .string
-                    )
+            VStack(alignment: .leading, spacing: 8) {
+                if let today = store.timesFor() {
+                    Text("Fajr: \(today.fajr ?? "--")")
+                    Text("Zuhr: \(today.zuhr ?? "--")")
+                    Text("Maghrib: \(today.maghrib ?? "--")")
+                } else {
+                    Text("No data for today")
                 }
-                .buttonStyle(.plain)
-                .foregroundStyle(.blue)
-                .bold()
             }
-            .padding()
+            .padding(12)
+            .frame(width: 280)
         }
 }
 

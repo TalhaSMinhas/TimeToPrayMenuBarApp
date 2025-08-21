@@ -9,7 +9,7 @@ import Foundation
 
 struct DayTimes: Codable {
     let sehri: String?
-    let subhSadiq: String?
+    let subuhSadik: String?
     let fajr: String?
     let fajrAzaan: String?
     let fajrJamaat: String?
@@ -25,6 +25,7 @@ struct DayTimes: Codable {
     let asrShafi: String?
     let asrHanafi: String?
     let asrAzaan: String?
+    let asrJamaat: String?
     let sunset: String?
     let maghrib: String?
     let esha: String?
@@ -33,7 +34,7 @@ struct DayTimes: Codable {
 
     enum CodingKeys: String, CodingKey {
         case sehri = "Sehri"
-        case subhSadiq = "Subh Sadiq"
+        case subuhSadik = "Subuh Sadik"
         case fajr = "Fajr"
         case fajrAzaan = "Fajr Azaan"
         case fajrJamaat = "Fajr Jamaat"
@@ -46,9 +47,10 @@ struct DayTimes: Codable {
         case zuhrJamaat = "Zuhr Jamaat"
         case jummahAzaan = "Jummah Azaan"
         case jummah = "Jummah"
-        case asrShafi = "Asr (Shafi)"
-        case asrHanafi = "Asr (Hanafi)"
+        case asrShafi = "Asr-Shafi"
+        case asrHanafi = "Asr-Hanafi"
         case asrAzaan = "Asr Azaan"
+        case asrJamaat = "Asr Jamaat"
         case sunset = "Sunset"
         case maghrib = "Maghrib"
         case esha = "Esha"

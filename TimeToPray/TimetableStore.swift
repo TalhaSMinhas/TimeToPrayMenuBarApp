@@ -14,7 +14,7 @@ final class TimetableStore: ObservableObject {
 
     func load() {
         guard let url = Bundle.main.url(
-            forResource: "masjid-ul-khaleel_2025_salah_times_normalized",
+            forResource: "masjid-ul-khaleel_2025_salah_times_table_schema",
             withExtension: "json"
         ) else {
             print("JSON not found in bundle")
