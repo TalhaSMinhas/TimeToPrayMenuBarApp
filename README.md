@@ -94,9 +94,3 @@ Currently bundled:
 ## 📜 License
 
 MIT © 2025 Talha Salman Minhas
-
----
-
-👆🏽 this keeps it simple, professional, and ready for others to clone or download.
-
-want me to also create a **short GitHub description + tagline** for the repo (the bit that shows up under the repo name)?
